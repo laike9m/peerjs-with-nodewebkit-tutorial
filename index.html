@@ -5,6 +5,7 @@
   <meta name="author" content="laike9m">
   <title>demo</title>
   <script type="javascript" src="peer.js"></script>
+  <script type="javascript" src="socket.io/socket.io.js"></script>
 </head>
 <body>
   peerjs with nodewebkit demo
@@ -32,7 +33,8 @@
     });
   });
 
-  document.getElementById("send").addEventListener("click", function(){
+  document.getElementById("receive").addEventListener("click", function(){
+    console.log("re filre");
     var peer = new Peer('lizhihua', {key: 'bid90nkby13sdcxr', debug: 3});
     peer.on('connection', function(conn) {
       conn.on('data', function(data){

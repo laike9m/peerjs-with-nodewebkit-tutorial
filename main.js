@@ -18,10 +18,11 @@ function toBuffer(ab) {
   return buffer;
 }
 
-var app = require('express').createServer();
-var io = require('socket.io')(app);
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-app.listen(12345);
+server.listen(12345);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
