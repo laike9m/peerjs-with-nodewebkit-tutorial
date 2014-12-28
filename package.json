@@ -1,5 +1,5 @@
 {
-    "name": "hello",
+    "name": "peerjs-with-nodewebkit-demo",
     "main": "main.html",
     "window": {
         "toolbar": true,
