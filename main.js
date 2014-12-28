@@ -23,7 +23,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 server.listen(12345);
-
+app.use(require('express').static(__dirname + '/static'));
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });

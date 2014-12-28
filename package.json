@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "main": "index.html",
+    "main": "main.html",
     "window": {
         "toolbar": true,
         "width": 800,
