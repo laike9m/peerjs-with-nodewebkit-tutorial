@@ -11,8 +11,8 @@
   <script>
     window.socket = io.connect('http://localhost/', { port: 12345 });
     function clickSend() {
-      var peer = new Peer('zuoyao', {key: '45rvl4l8vjn3766r'});
-      var conn = peer.connect('lizhihua');
+      var peer = new Peer('sender', {key: '45rvl4l8vjn3766r'});
+      var conn = peer.connect('receiver');
       conn.on('open', function () {
         console.log("sender dataconn open");
         window.socket.on('sendToPeer', function(data) {
@@ -24,7 +24,7 @@
       });
     }
     function clickRecv(){
-      var peer = new Peer('lizhihua', {key: '45rvl4l8vjn3766r'});
+      var peer = new Peer('receiver', {key: '45rvl4l8vjn3766r'});
       peer.on('connection', function(conn) {
         conn.on("open", function(){
           console.log("receiver dataconn open");
