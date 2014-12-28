@@ -28,11 +28,16 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+var browserWindow;
+exports.initWindow = function(window){
+  browserWindow = window;
+}
+
 io.on('connection', function(socket){
   global.socket = socket;
   socket.on('send', function(data){
     data = fs.readFileSync('.gitignore');
-    socket.emit('send', toArrayBuffer(data));
+    socket.emit('sendToPeer', toArrayBuffer(data));
   });
   socket.on('receive', function(data){
     console.log("start wrting to file");

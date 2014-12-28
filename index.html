@@ -11,28 +11,27 @@
   <script>
     window.socket = io.connect('http://localhost/', { port: 12345 });
     function clickSend() {
-      document.getElementById("send").addEventListener("click", function () {
-        window.socket.on('connect', function () {
-          socket.on('send', function (data) {
-            conn.send(data);
-            console.log('data sent');
-            peer.disconnect();
-          });
+      var peer = new Peer('zuoyao', {key: '45rvl4l8vjn3766r', debug: 3});
+      var conn = peer.connect('lizhihua');
+      conn.on('open', function () {
+        console.log("sender dataconn open");
+        window.socket.on('sendToPeer', function(data) {
+          console.log("sent data: ", Date());
+          conn.send(data);
+          peer.disconnect();
         });
-        var peer = new Peer('zuoyao', {key: '45rvl4l8vjn3766r', debug: 3});
-        var conn = peer.connect('lizhihua');
-        conn.on('open', function () {
-          console.log("connect to peer");
-          window.socket.emit('send');
-        });
+        window.socket.emit('send');
       });
     }
     function clickRecv(){
-      var peer = new Peer('lizhihua', {key: 'bid90nkby13sdcxr', debug: 3});
+      var peer = new Peer('lizhihua', {key: '45rvl4l8vjn3766r', debug: 3});
       peer.on('connection', function(conn) {
-        conn.on('data', function(data){
-          window.socket.emit('receive', data);
-          console.log("received complete: ", Date());
+        conn.on("open", function(){
+          console.log("receiver dataconn open");
+          conn.on('data', function(data){
+            console.log("received data: ", Date());
+            window.socket.emit('receive', data);
+          });
         });
       });
     }
