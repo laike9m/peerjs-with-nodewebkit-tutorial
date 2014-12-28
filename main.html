@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="author" content="laike9m">
+  <title>demo</title>
+</head>
+<body>
+  peerjs with nodewebkit demo
+  <button id="send">send</button>
+  <button id="receive">receive</button>
+</body>
+<script>
+  var main = require('./main');
+  window.location.href = "http://127.0.0.1:12345/";
+  window.socket = io.connect('http://localhost/', { port: 12345 });
+
+  document.getElementById("send").addEventListener("click", function(){
+    window.socket.on('connect', function(){
+      socket.on('send', function(data){
+        conn.send(data);
+        console.log('data sent');
+        peer.disconnect();
+      });
+    });
+    var peer = new Peer('zuoyao', {key: '45rvl4l8vjn3766r', debug: 3});
+    var conn = peer.connect('lizhihua');
+    conn.on('open', function(){
+      console.log("connect to peer");
+      window.socket.emit('send');
+    });
+  });
+
+  document.getElementById("send").addEventListener("click", function(){
+    var peer = new Peer('lizhihua', {key: 'bid90nkby13sdcxr', debug: 3});
+    peer.on('connection', function(conn) {
+      conn.on('data', function(data){
+        window.socket.emit('receive', data);
+        console.log("received complete: ", Date());
+      });
+    });
+  });
+
+</script>
+</html>
