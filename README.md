@@ -30,11 +30,11 @@ If all goes well, you'll find a newly created file called `received_gitignore` i
 
 ### run on two machines
 
-Step 1-6 is the same, you should do them on both machines.
+Step 1-6 is are the same, you should do them on both machines.
 
-On one machine, click `receive` button, on the other machine, click `send` button. `.gitignore` will be transferred and saved as `received_gitignore`.
+On one machine, click `receive` button, on the other machine, click `send` button. `.gitignore` will be transferred and saved as `received_gitignore` on receiving side.
 
-## detailed implementation
+## Detailed implementation
 
 See my tutorial: [A tutorial on using PeerJs in node-webkit app][1]
 
