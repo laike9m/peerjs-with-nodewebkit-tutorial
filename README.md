@@ -1,9 +1,9 @@
-peerjs-with-nodewebkit-tutorial
+peerjs-with-nodewebkit(NW.js)-tutorial
 ===============================
 
 ## What's this?
 
-This is a demo for [A tutorial on using PeerJs in node-webkit app][1]. It shows how to integrate [PeerJs][2] into your [node-webkit][3] app, thus making your app able to do P2P communication.
+This is a demo for [A tutorial on using PeerJs in node-webkit app][1]. It shows how to integrate [PeerJs][2] into your [node-webkit/NW.js][3] app, thus making your app able to do P2P communication.
 
 ## How to run this demo?
 
